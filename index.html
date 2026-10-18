@@ -1,51 +1,118 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head> 
-    <meta charset="utf_8">
-    <title> my 1</title>
-    <style> 
-        <style>
-    /* خلفية الصفحة باللون العنابي الداكن */
-    body {
-        background-color: #401826;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقعي المميز</title>
+    <style>
+        /* خلفية الصفحة باللون العنابي الداكن */
+        body {
+            background-color: #401826;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            overflow-x: hidden;
+        }
 
-    /* بطاقة التصميم */
-    .card {
-        background-color: #ffffff;
-        width: 350px;
-        margin: 50px auto;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-        text-align: center;
-    }
+        /* بطاقة التصميم */
+        .card {
+            background-color: #ffffff;
+            width: 320px;
+            margin: 80px auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
 
-    /* العنوان باللون العنابي */
-    h1 {
-        color: #401826;
-        font-size: 24px;
-    }
+        /* العنوان باللون العنابي */
+        h1 {
+            color: #401826;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
 
-    /* الزر باللون الأخضر الغامق */
-    .btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 25px;
-        background-color: #326649;
-        color: white;
-        text-decoration: none;
-        border-radius: 8px;
-        font-weight: bold;
-    }
-</style>
+        p {
+            color: #555555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* الزر باللون الأخضر الغامق */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #326649;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #27523a;
+            transform: scale(1.05);
+        }
+
+        /* تصميم القلوب المتساقطة */
+        .heart {
+            position: fixed;
+            top: -20px;
+            color: #ff69b4;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear forwards;
+            z-index: 9999;
+        }
+
+        /* تحريك القلوب من الأعلى إلى الأسفل */
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
-"<body> 
-<h1> مرحبا وأهلا</h1>
-<p> بدايتي الأولى</p>
+<body>
+
+    <div class="card">
+        <h1>موقعي الشخصي الأول</h1>
+        <p>مرحباً بكِ! اضغطي على الزر بالأسفل لترى السحر والجمال هاطلاً على الصفحة ✨</p>
+        <button class="btn" onclick="makeItRain()">امطر قلوباً وردية 💖</button>
+    </div>
+
+    <script>
+        function makeItRain() {
+            // إنشاء 35 قلباً عند الضغط
+            for (let i = 0; i < 35; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerText = '💗';
+                    
+                    // تحديد مكان واسع للظهور عشوائياً
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    
+                    // تحديد سرعة حركة القلوب وحجمها عشوائياً
+                    heart.style.animationDuration = Math.random() * 2 + 2 + 's';
+                    heart.style.fontSize = Math.random() * 15 + 18 + 'px';
+                    
+                    document.body.appendChild(heart);
+                    
+                    // تنظيف القلوب بعد انتهاء حركتها
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 80);
+            }
+        }
+    </script>
 
 </body>
 </html>
